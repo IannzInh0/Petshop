@@ -1,0 +1,278 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffe6e6;
+}
+
+button {
+    background-color: #ff5faf;
+    border-color: #000000;
+    font-weight: bolder;
+    height: 45px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.logo {
+    display: block;
+    width: 100px; 
+    height: auto;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    position: relative;
+}
+
+#menu {
+    background-color: #ff66b3;
+    padding: 10px;
+    text-align: center; 
+    position: fixed; 
+    width: 100%; 
+    top: 0;
+    z-index: 1000;
+}
+
+header {
+    background-image: url("https://www.petz.com.br/blog/wp-content/uploads/2017/09/dicas-pet-03.jpg");
+    color: #fff;
+    padding: 20px 0;
+    background-position: center top;
+    height: 200px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-info p {
+    color: #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    height: 40px;
+}
+
+.contact-info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    border-top-left-radius: 10px;
+}
+
+
+#destaque {
+    background-color: #ffb3d9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#servicos {
+    background-color: #ffe6e6;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#servicos p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+}
+
+.service-icons img {
+    width: 100px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.service-icons img:hover {
+    transform: scale(1.7);
+}
+
+#produtos {
+    background-color: #ffb3d9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.product-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.product-gallery img {
+    width: 200px; 
+    transition: transform 0.3s ease; 
+}
+
+.product-gallery img:hover {
+    transform: scale(1.6); 
+}
+
+.product {
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.product img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #ff66b3;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+
+footer nav ul {
+    margin: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.social-media a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+#sobre-nos {
+    background-color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#sobre-nos h2 {
+    color: #ff66b3;
+}
+
+#sobre-nos p {
+    margin-bottom: 20px;
+}
+
+#sobre-nos ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sobre-nos ul li {
+    margin-bottom: 10px;
+}
+
+#depoimentos {
+    background-color: #ffb3d9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#depoimentos h2 {
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.testimonial {
+    margin-bottom: 30px;
+}
+
+.testimonial img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.testimonial blockquote {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial cite {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 24px;
+    }
+    
+    .product img {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 24px;
+    }
+    
+    .product {
+        width: 100%;
+    }
+    
+    .product img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #menu {
+        padding: 5px;
+    }
+
+    nav ul li {
+        margin-right: 10px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+    }
+
+    .testimonial img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .testimonial blockquote {
+        font-size: 14px;
+    }
+}
+
+
+
+
