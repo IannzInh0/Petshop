@@ -27,6 +27,7 @@ button {
 
 .container {
     position: relative;
+    
 }
 
 #menu {
@@ -39,14 +40,62 @@ button {
     z-index: 1000;
 }
 
+#menu li {
+    margin: 0 10px;
+}
+
+#menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#menu li#cart-icon {
+    position: relative; 
+}
+
+#menu li#cart-icon img {
+    width: 30px;
+    height: auto;
+}
+
+#menu li#cart-icon #cart-counter {
+    background-color: #ff5faf;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+#menu a{
+    color: #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    margin-inline-start: 130px;
+}
+
 header {
-    background-image: url("https://www.petz.com.br/blog/wp-content/uploads/2017/09/dicas-pet-03.jpg");
     color: #fff;
     padding: 20px 0;
     background-position: center top;
-    height: 200px;
+    height: 210px;
+    background-image: url('https://stittsvillesmallanimalclinic.ca/files/2012/07/pets-banner.jpg');
     text-align: center;
 }
+
+#header.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 
 header h1 {
     margin: 0;
@@ -149,6 +198,7 @@ footer {
     padding: 20px 0;
     text-align: center;
     position: relative;
+    margin-top: 220px;
 }
 
 
@@ -273,6 +323,185 @@ footer nav ul li {
     }
 }
 
+#menu #cart-icon {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+#menu #cart-icon img {
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+}
+
+#menu #cart-counter {
+    background-color: #ff5faf;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+#menu {
+    background-color: #ff66b3;
+    padding: 10px;
+    text-align: center; 
+    position: fixed; 
+    width: 100%; 
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; 
+    list-style: none;
+    align-items: center;
+}
+
+#logo {
+    margin-right: auto; 
+}
+
+#logo-icon img {
+    width: 60px; 
+    height: auto;
+}
+
+#cart-icon {
+    display: flex;
+    align-items: center; 
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#logo {
+    margin-right: auto; 
+   height: 70px;
+}
+
+
+
+
+
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+#menu #cart-icon {
+    display: flex;
+    align-items: center; 
+    margin-left: 20px; 
+    cursor: pointer;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-content > * {
+    flex: 1 1 300px;
+    margin: 0 20px;
+}
+
+.footer-nav ul,
+.social-media,
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav h2,
+.social-media h2,
+.contact-info h2,
+.contact-form h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-nav a,
+.social-media a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #45a049;
+}
 
 
 
