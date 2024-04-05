@@ -7,14 +7,30 @@
     <link rel="stylesheet" href="joy.css">
 </head>
 <body>
-
     
-<header>
-    <h1>Itens no Carrinho</h1>
-</header>
+    <header id="header">
+        <h1>Itens no Carrinho</h1>
+        <div class="container">
+            
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contatoTop">Contato</a></li>
+                    <li><a href="joyblog.html">Blog</a></li>
+                    <li id="cart-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/126/126510.png" alt="Carrinho">
+                        <span id="cart-counter">0</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
 <ul id="cartItemsList"></ul>
 <p>Total: R$ <span id="totalPrice">0.00</span></p>
+<button onclick="finalizePurchase()">Finalizar Compra</button>
 
 <script>
 // Função para extrair os parâmetros da URL
