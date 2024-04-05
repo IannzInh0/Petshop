@@ -8,29 +8,48 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <h1>Pet Shop</h1>
-        <a href="file:///c%3A/Users/IAN/drumloops/narrator/joy.html#contato" class="logo">
-            <img src="https://png.pngtree.com/png-clipart/20230106/ourmid/pngtree-pet-shop-house-png-image_6553432.png" alt="Logo da sua empresa">
-        </a>
-        <nav>
-            <ul id="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#contatoTop">Contato</a></li>
-                <li><a href="file:///c%3A/Users/IAN/drumloops/narrator/joyblog.html">blog</a></li>
-            </ul>
-        </nav>
-</header>
 
-<section id="destaque">
-    <div class="container">
-        <h2>Bem-vindo ao Pet Shop Clube dos Bichinhos!</h2>
-        <p>Oferecemos serviços e produtos de alta qualidade para o seu melhor amigo.</p>
+
+    <header id="header">
+        <div class="container">
+            <h1 id="logo">Pet Shop</h1>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contatoTop">Contato</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li id="cart-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/126/126510.png" alt="Carrinho">
+                        <span id="cart-counter">0</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    
+    
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Itens no Carrinho</h2>
+            <ul id="cartItemsList"></ul>
+            <p>Total: R$ <span id="totalPrice">0.00</span></p>
+            <button onclick="openCartPage()">Ver Carrinho</button>
+            <button onclick="finalizePurchase()">Finalizar Compra</button>
+        </div>
     </div>
-</section>
+    
+
+
+    <section id="destaque">
+        <div class="container">
+            <h2>Bem-vindo ao Pet Shop Clube dos Bichinhos!</h2>
+            <p>Oferecemos serviços e produtos de alta qualidade para o seu melhor amigo.</p>
+        </div>
+    </section>
 
 <section id="sobre-nos">
     <div class="container">
@@ -63,30 +82,115 @@
 </section>
 
 <section id="produtos">
+    
     <div class="container">
+        
         <h2>Produtos à Venda</h2>
+        
         <div class="product-gallery">
+            
             <div class="product">
+                
                 <img src="https://ca.virbac.com/files/live/sites/virbac-ca/files/HPMV2/Product/HPM-Pet-Food/Dog/Junior/Dog-Jr-3lb-SM/Dog-Jr-SM-WEB-600-600-right.png" alt="Produto 1">
                 <p>Ração canina</p>
                 <p>Preço: R$ 25.00</p>
-                <button>Comprar</button>
+                <button onclick="addToCart('Ração canina', 25.00)">Comprar</button>
+            
             </div>
+            
             <div class="product">
+                
                 <img src="https://www.whiskas.com.br/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf2156/files/2022-10/7896029091944-product-image-1.png" alt="Produto 2">
                 <p>Ração felina</p>
                 <p>Preço: R$ 15.00</p>
-                <button>Comprar</button>
+                <button onclick="addToCart('Ração Felina', 15.00)">Comprar</button>
+            
             </div>
+            
             <div class="product">
+                
                 <img src="https://images.tcdn.com.br/img/img_prod/866956/racao_nutropica_arara_natural_5kg_2813_1_9918a448aa777a475e229927748794a9.png" alt="Produto 3">
                 <p>Ração de Arara</p>
                 <p>Preço: R$ 36.99</p>
-                <button>Comprar</button>
+                <button onclick="addToCart('Ração de Arara', 36.99)">Comprar</button>
+            
             </div>
+
         </div>
     </div>
 </section>
+
+<script>
+
+let cartItems = [];
+
+function calculateTotalPrice() {
+    let totalPrice = 0;
+    cartItems.forEach(item => {
+        totalPrice += item.price;
+    });
+    return totalPrice.toFixed(2);
+}
+
+
+function addToCart(productName, productPrice) {
+    cartItems.push({ name: productName, price: productPrice });
+    updateCartCounter();
+}
+
+function updateCartCounter() {
+    const cartCounter = document.getElementById('cart-counter');
+    cartCounter.textContent = cartItems.length;
+}
+
+
+function showCartItems() {
+    const cartItemsList = document.getElementById('cartItemsList');
+    cartItemsList.innerHTML = '';
+
+    cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - R$ ${item.price}`;
+        cartItemsList.appendChild(li);
+    });
+
+    const totalPriceSpan = document.getElementById('totalPrice');
+    totalPriceSpan.textContent = calculateTotalPrice();
+
+    
+    document.getElementById('cartModal').style.display = 'block';
+}
+
+
+function openCartPage() {
+    
+    const params = cartItems.map(item => `${encodeURIComponent(item.name)}=${item.price}`).join('&');
+    const url = `carrinho.html?${params}`;
+    
+    window.open(url, '_blank');
+}
+
+
+function finalizePurchase() {
+    alert('Compra finalizada!');
+    cartItems = [];
+    updateCartCounter();
+    document.getElementById('cartModal').style.display = 'none';
+}
+
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('cartModal').style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if (event.target == document.getElementById('cartModal')) {
+        document.getElementById('cartModal').style.display = 'none';
+    }
+});
+
+document.getElementById('cart-icon').addEventListener('click', showCartItems);
+
+</script>
 
 <section id="depoimentos">
     <div class="container">
@@ -111,43 +215,50 @@
 
 <footer>
     <div class="container">
-        <nav>
-            <ul>
-                <li><a href="file:///c%3A/Users/IAN/drumloops/narrator/politicaDePrivacidade.html">Política de Privacidade</a></li>
-                <li><a href="#">Termos de Serviço</a></li>
-                <li><a href="file:///c%3A/Users/IAN/drumloops/narrator/mapasite.html">Mapa do Site</a></li>
-            </ul>
-        </nav>
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="https://www.instagram.com/iannnnai_/?next=%2F">Instagram</a>
-            <a href="#">Twitter</a>
-        </div>
-        <div id="contatoTop" class="contact-info">
-            <p>Telefone: (75) 988911191</p>
-            <p>E-mail: email@gmail.com</p>
-            <p>Endereço: Rua blablabla, 413</p>
-        </div>
-        <div class="contact-form">
-            <h2>Entre em Contato</h2>
-            <form action="processar_formulario.php" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+        <div class="footer-content">
+            <nav class="footer-nav">
+                <h2>Navegação</h2>
+                <ul>
+                    <li><a href="file:///c%3A/Users/IAN/drumloops/narrator/politicaDePrivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                    <li><a href="file:///c%3A/Users/IAN/drumloops/narrator/mapasite.html">Mapa do Site</a></li>
+                </ul>
+            </nav>
+            <div class="contact-form">
+                <h2>Entre em Contato</h2>
+                <form action="processar_formulario.php" method="post">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
 
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
 
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone">
 
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
 
-                <button type="submit">Enviar Mensagem</button>
-            </form>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+            <div class="social-media">
+                <h2>Redes Sociais</h2>
+                <a href="#">Facebook</a>
+                <a href="https://www.instagram.com/iannnnai_/?next=%2F">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="contact-info">
+                <h2>Informações de Contato</h2>
+                <p>Telefone: (75) 988911191</p>
+                <p>E-mail: email@gmail.com</p>
+                <p>Endereço: Rua blablabla, 413</p>
+            </div>
+        
         </div>
     </div>
 </footer>
+
 
 
 </body>
