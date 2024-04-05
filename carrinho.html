@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="joy.css">
+</head>
+<body>
+
+    
+<header>
+    <h1>Itens no Carrinho</h1>
+</header>
+
+<ul id="cartItemsList"></ul>
+<p>Total: R$ <span id="totalPrice">0.00</span></p>
+
+<script>
+// Função para extrair os parâmetros da URL
+function getCartItemsFromURL() {
+    const searchParams = new URLSearchParams(window.location.search);
+    const cartItems = [];
+    
+    for (const [name, price] of searchParams) {
+        cartItems.push({ name: decodeURIComponent(name), price: parseFloat(price) });
+    }
+    
+    return cartItems;
+}
+
+// Função para exibir os itens do carrinho
+function showCartItems() {
+    const cartItemsList = document.getElementById('cartItemsList');
+    const totalPriceSpan = document.getElementById('totalPrice');
+    let totalPrice = 0;
+    
+    // Limpa a lista de itens
+    cartItemsList.innerHTML = '';
+    
+    // Obtém os itens do carrinho da URL
+    const cartItems = getCartItemsFromURL();
+    
+    // Adiciona os itens à lista e calcula o preço total
+    cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+        cartItemsList.appendChild(li);
+        totalPrice += item.price;
+    });
+    
+    // Exibe o preço total
+    totalPriceSpan.textContent = totalPrice.toFixed(2);
+}
+
+// Exibe os itens do carrinho quando a página carregar
+window.addEventListener('DOMContentLoaded', showCartItems);
+
+</script>
+
+</body>
+</html>
