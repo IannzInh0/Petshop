@@ -7,12 +7,18 @@ body, html {
 
 button {
     background-color: #ff5faf;
-    border-color: #000000;
-    font-weight: bolder;
+    border: none;
+    color: #fff;
+    font-weight: bold;
     height: 45px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
+    padding: 0 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
 
 .logo {
     display: block;
@@ -497,10 +503,20 @@ nav ul {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4081;
 }
 
 .contact-form button:hover {
     background-color: #45a049;
+}
+
+#removeButton{
+    height: 1px;
+    width: 1px;
 }
 
 

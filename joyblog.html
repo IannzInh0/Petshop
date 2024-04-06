@@ -8,17 +8,21 @@
 </head>
 <body>
 
-<header>
+<header id="header">
     <div class="container">
         <h1>Blog - Pet Shop</h1>
         
         <nav>
             <ul id="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="joyblog.html" class="active">Blog</a></li>
+                <li><a href="index.html">Serviços</a></li>
+                <li><a href="index.html">Produtos</a></li>
+                <li><a href="index.html">Contato</a></li>
+                <li><a href="joyblog.html">Blog</a></li>
+                <li id="cart-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/126/126510.png" alt="Carrinho">
+                    <span id="cart-counter">0</span>
+                </li>
             </ul>
         </nav>
     </div>
@@ -38,42 +42,88 @@
 
 <footer>
     <div class="container">
-        <nav>
-            <ul>
-                <li><a href="politicaDePrivacidade.html">Política de Privacidade</a></li>
-                <li><a href="termosDeServico.html">Termos de Serviço</a></li>
-                <li><a href="mapasite.html">Mapa do Site</a></li>
-            </ul>
-        </nav>
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="https://www.instagram.com/iannnnai_/?next=%2F">Instagram</a>
-            <a href="#">Twitter</a>
-        </div>
-        <div class="contact-info">
-            <p>Telefone: (75) 988911191</p>
-            <p>E-mail: email@gmail.com</p>
-            <p>Endereço: Rua blablabla, 413</p>
-        </div>
-        <div class="contact-form">
-            <h2>Entre em Contato</h2>
-            <form action="processar_formulario.php" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+        <div class="footer-content">
+            
+            
+            
+            <nav class="footer-nav">
+                <h2>Navegação</h2>
+                <ul>
+                    <li><a href="politicaDePrivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="termosDeServico.html">Termos de Serviço</a></li>
+                    <li><a href="mapasite.html">Mapa do Site</a></li>
+                </ul>
 
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="nome">metodos de pagamento:</label>
+                <div class="brand-wrapper flex start wrap">
+                    <div class="card mastercard" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/mastercard-logo.png" alt="Bandeira mastercard">
+                    </div>
+                    <div class="card visa" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/visa-logo.png" alt="Bandeira visa">
+                    </div>
+                    <div class="card american" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/americanexpress-logo.png" alt="American express">
+                    </div>
+                    <div class="card diners" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/dinersclub-logo.png" alt="Diners">
+                    </div>
+                    <div class="card hyper" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/hypercard-logo.png" alt="Hypercard">
+                    </div>
+                    <div class="card elo" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/elo-logo.png" alt="Bandeira elo">
+                    </div>
+                    <div class="card boleto" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/barcode-icon.png" alt="Código de barras">
+                    </div>
+                    <div class="card pix" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/pix-transparent.svg" alt="Pix">
+                    </div>
+                </div>
 
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone">
+            </nav>
 
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+            
 
-                <button type="submit">Enviar Mensagem</button>
-            </form>
-        </div>
+            <div class="contact-form">
+                <h2>Entre em Contato</h2>
+                <form action="processar_formulario.php" method="post">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone">
+
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+
+
+            <div class="social-media">
+                <h2>Redes Sociais</h2>
+                <a href="#">Facebook</a>
+                <a href="https://www.instagram.com/iannnnai_/?next=%2F">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+
+            
+
+            <div class="contact-info">
+                <h2>Informações de Contato</h2>
+                <p>Telefone: (75) 988911191</p>
+                <p>E-mail: email@gmail.com</p>
+                <p>Endereço: Rua blablabla, 413</p>
+            </div>
+
         
+        </div>
     </div>
 </footer>
 

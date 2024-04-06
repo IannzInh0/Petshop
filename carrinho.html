@@ -15,9 +15,9 @@
             <nav>
                 <ul id="menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#contatoTop">Contato</a></li>
+                    <li><a href="index.html">Serviços</a></li>
+                    <li><a href="index.html">Produtos</a></li>
+                    <li><a href="index.html">Contato</a></li>
                     <li><a href="joyblog.html">Blog</a></li>
                     <li id="cart-icon">
                         <img src="https://cdn-icons-png.flaticon.com/512/126/126510.png" alt="Carrinho">
@@ -28,51 +28,199 @@
         </div>
     </header>
 
-<ul id="cartItemsList"></ul>
-<p>Total: R$ <span id="totalPrice">0.00</span></p>
-<button onclick="finalizePurchase()">Finalizar Compra</button>
+    <ul id="cartItemsList"></ul>
+    
 
-<script>
-// Função para extrair os parâmetros da URL
-function getCartItemsFromURL() {
-    const searchParams = new URLSearchParams(window.location.search);
-    const cartItems = [];
-    
-    for (const [name, price] of searchParams) {
-        cartItems.push({ name: decodeURIComponent(name), price: parseFloat(price) });
+    <p>Total: R$ <span id="totalPrice">0.00</span></p>
+
+    <div id="paymentForm">
+        <h2>Informações de Pagamento</h2>
+        
+        <form>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" maxlength="8" required>
+            
+
+            <label for="paymentMethod">Método de Pagamento:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="">Selecione</option>
+                <option value="cartao">Cartão de Crédito</option>
+                <option value="boleto">Boleto Bancário</option>
+                <option value="pix">PIX</option>
+            </select>
+            <button type="button" onclick="calculateShipping()">Calcular Frete</button>
+            <p id="shippingCost">Frete: R$ 0.00</p>
+            <button type="button" onclick="finalizePurchase()">Finalizar Compra</button>
+        </form>
+    </div>
+
+    <script>
+        function getCartItemsFromURL() {
+            const searchParams = new URLSearchParams(window.location.search);
+            const cartItems = [];
+            
+            for (const [name, price] of searchParams) {
+                cartItems.push({ name: decodeURIComponent(name), price: parseFloat(price) });
+            }
+            
+            return cartItems;
+        }
+
+        function removeCartItem(itemName) {
+    const index = cartItems.findIndex(item => item.name === itemName);
+    if (index !== -1) {
+        cartItems.splice(index, 1);
+        saveCartItems(cartItems);
+        showCartItems();
     }
-    
-    return cartItems;
 }
 
-// Função para exibir os itens do carrinho
-function showCartItems() {
+        function showCartItems() {
     const cartItemsList = document.getElementById('cartItemsList');
     const totalPriceSpan = document.getElementById('totalPrice');
     let totalPrice = 0;
     
-    // Limpa a lista de itens
     cartItemsList.innerHTML = '';
     
-    // Obtém os itens do carrinho da URL
     const cartItems = getCartItemsFromURL();
     
-    // Adiciona os itens à lista e calcula o preço total
     cartItems.forEach(item => {
         const li = document.createElement('li');
         li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remover';
+        removeButton.onclick = function() {
+            removeCartItem(item.name);
+        };
+
+        removeButton.style.fontSize = '13px';
+        removeButton.style.marginTop = '5px';
+        removeButton.style.padding = '5px 10px';
+
+
+        li.appendChild(removeButton);
         cartItemsList.appendChild(li);
         totalPrice += item.price;
     });
+
+
+    function loadCartItems() {
+    const storedItems = localStorage.getItem('cartItems');
+    if (storedItems) {
+        cartItems = JSON.parse(storedItems);
+    }
+}
     
-    // Exibe o preço total
     totalPriceSpan.textContent = totalPrice.toFixed(2);
 }
 
-// Exibe os itens do carrinho quando a página carregar
-window.addEventListener('DOMContentLoaded', showCartItems);
+        function calculateShipping() {
+            const cepInput = document.getElementById('cep');
+            const cep = cepInput.value.trim();
+            
+            if (!/^\d{8}$/.test(cep)) {
+                alert('Por favor, insira um CEP válido.');
+                return;
+            }
+            
+            const shippingCost = Math.random() * 20;
+            document.getElementById('shippingCost').textContent = `Frete: R$ ${shippingCost.toFixed(2)}`;
+        }
 
-</script>
+        function finalizePurchase() {
+            alert('Compra finalizada!');
+            window.location.href = 'index.html';
+        }
+
+        window.addEventListener('DOMContentLoaded', showCartItems);
+    </script>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            
+            
+            
+            <nav class="footer-nav">
+                <h2>Navegação</h2>
+                <ul>
+                    <li><a href="politicaDePrivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="termosDeServico.html">Termos de Serviço</a></li>
+                    <li><a href="mapasite.html">Mapa do Site</a></li>
+                </ul>
+
+                <label for="nome">metodos de pagamento:</label>
+                <div class="brand-wrapper flex start wrap">
+                    <div class="card mastercard" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/mastercard-logo.png" alt="Bandeira mastercard">
+                    </div>
+                    <div class="card visa" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/visa-logo.png" alt="Bandeira visa">
+                    </div>
+                    <div class="card american" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/americanexpress-logo.png" alt="American express">
+                    </div>
+                    <div class="card diners" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/dinersclub-logo.png" alt="Diners">
+                    </div>
+                    <div class="card hyper" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/hypercard-logo.png" alt="Hypercard">
+                    </div>
+                    <div class="card elo" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/elo-logo.png" alt="Bandeira elo">
+                    </div>
+                    <div class="card boleto" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/barcode-icon.png" alt="Código de barras">
+                    </div>
+                    <div class="card pix" aria-hidden="true">
+                        <img src="https://static.petz.com.br/images/exp-facelift/pix-transparent.svg" alt="Pix">
+                    </div>
+                </div>
+
+            </nav>
+
+            
+
+            <div class="contact-form">
+                <h2>Entre em Contato</h2>
+                <form action="processar_formulario.php" method="post">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone">
+
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+
+
+            <div class="social-media">
+                <h2>Redes Sociais</h2>
+                <a href="#">Facebook</a>
+                <a href="https://www.instagram.com/iannnnai_/?next=%2F">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+
+            
+
+            <div class="contact-info">
+                <h2>Informações de Contato</h2>
+                <p>Telefone: (75) 988911191</p>
+                <p>E-mail: email@gmail.com</p>
+                <p>Endereço: Rua blablabla, 413</p>
+            </div>
+
+        
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
