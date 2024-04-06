@@ -31,6 +31,10 @@ button {
     height: auto;
 }
 
+#logo{
+    width: 90px;
+}
+
 .container {
     position: relative;
     
@@ -518,6 +522,8 @@ button:hover {
     height: 1px;
     width: 1px;
 }
+
+
 
 
 
